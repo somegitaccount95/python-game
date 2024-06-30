@@ -1,5 +1,5 @@
 # python-game
-Very Great Project
+Insane Epic Jump Game
 
 infinite jumber game in python
 
