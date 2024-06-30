@@ -23,7 +23,7 @@ while running:
     # Game Loop
   
 
-    # update
+    # Update
     pygame.display.flip()
     clock.tick(60)
  
