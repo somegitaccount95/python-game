@@ -1,2 +1,2 @@
 # python-game
-Great Project
+Very Great Project
