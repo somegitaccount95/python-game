@@ -6,7 +6,9 @@ screen_size = (700, 500)
 
 screen = pygame.display.set_mode(screen_size)
 pygame.display.set_caption("pygame Test")
- 
+
+speed = 5
+jump = 5
 
 clock = pygame.time.Clock()
  
@@ -28,3 +30,4 @@ while running:
     clock.tick(60)
  
 pygame.quit()
+
