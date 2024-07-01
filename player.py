@@ -35,7 +35,6 @@ class player:
 		# Apply forces
 		self.x += self.xvel
 		self.y += self.yvel
-		self.y += 2
 
 		self.xvel *= self.drag
 		self.yvel *= self.drag
