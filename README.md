@@ -1,8 +1,8 @@
 # python-game
 Insane Epic Jump Game
 
-infinite jumber game in python
+infinite jumper game in python
 
-player jumps vertically up levels avoiding enemies.
+riba jumps vertically up levels avoiding enemies.
 
 very cool game
