@@ -13,11 +13,11 @@ clock = pygame.time.Clock()
 from pygame.locals import *
 pygame.init()
 
-speed = 2
+
 keyDict = [K_w, K_a, K_s, K_d, K_UP, K_DOWN, K_LEFT, K_RIGHT]
 keys = {K_w : False, K_a : False, K_s : False, K_d : False, K_UP : False, K_DOWN : False, K_LEFT : False, K_RIGHT : False}
 
-riba = player(screen, "Riba.png", 100, 100)
+riba = player(screen, "Images/Riba.png", 100, 100)
 
 running = True
 while running:
