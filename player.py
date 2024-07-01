@@ -29,7 +29,7 @@ class player:
 		if keys[K_SPACE] == True:
 			self.jump = True
 		if self.jump:
-			self.yvel = -7
+			self.yvel += -7
 			jump = False
 			
 		# Apply forces
