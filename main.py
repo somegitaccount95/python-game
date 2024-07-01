@@ -1,3 +1,4 @@
+from pygame.locals import *
 import pygame
 from player import player
 
@@ -12,8 +13,9 @@ clock = pygame.time.Clock()
 from pygame.locals import *
 pygame.init()
 
-right = False
-left = False
+speed = 2
+keyDict = [K_w, K_a, K_s, K_d, K_UP, K_DOWN, K_LEFT, K_RIGHT]
+keys = {K_w : False, K_a : False, K_s : False, K_d : False, K_UP : False, K_DOWN : False, K_LEFT : False, K_RIGHT : False}
 
 riba = player(screen, "Riba.png", 100, 100)
 
@@ -22,21 +24,21 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+        # Keyboard inputs
         if event.type == KEYDOWN:
-            if event.key == K_RIGHT:
-                right = True
-            if event.key == K_LEFT:
-                left = True
+            if event.key in keyDict:
+              keys[event.key] = True
+
+
         if event.type == KEYUP:
-            if event.key == K_RIGHT:
-                right = False
-            if event.key == K_LEFT:
-                left = False
-    
+            if event.key in keyDict:
+                keys[event.key] = False
+
     screen.fill((100,112,230))
      
     # Game Loop
-    riba.draw()
+    riba.update(keys)
 
 
     # Update
