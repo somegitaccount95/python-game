@@ -5,4 +5,4 @@ infinite jumber game in python
 
 player jumps vertically up levels avoiding enemies.
 
-cool game
+very cool game
