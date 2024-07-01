@@ -1,4 +1,5 @@
 import pygame
+from player import player
 
 # --init--
 pygame.init()
@@ -14,8 +15,7 @@ pygame.init()
 right = False
 left = False
 
-riba = pygame.image.load("riba.png")
-location = [100, 100]
+riba = player(screen, "Riba.png", 100, 100)
 
 running = True
 while running:
@@ -36,12 +36,8 @@ while running:
     screen.fill((100,112,230))
      
     # Game Loop
+    riba.draw()
 
-    screen.blit(riba, location)
-    if right:
-        location[0] += 5
-    if left:
-        location[0] -= 5
 
     # Update
     pygame.display.flip()
