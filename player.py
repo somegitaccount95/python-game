@@ -11,6 +11,7 @@ class player:
 		self.yvel = 0
 		self.drag = 0.98
 		self.speed = 2
+		self.jump = False
 
 
 	def draw(self):
@@ -21,19 +22,20 @@ class player:
 		self.draw()
 
 		# Movement
-		if keys[K_w] == True or keys[K_UP] == True:
-			self.yvel = -5
 		if keys[K_a] == True or keys[K_LEFT] == True:
 			self.xvel = -5
-		if keys[K_s] == True or keys[K_DOWN] == True:
-			self.yvel = 5
 		if keys[K_d] == True or keys[K_RIGHT] == True:
 			self.xvel = 5
-
-
+		if keys[K_SPACE] == True:
+			self.jump = True
+		if self.jump:
+			self.yvel = -7
+			jump = False
+			
 		# Apply forces
 		self.x += self.xvel
 		self.y += self.yvel
+		self.y += 2
 
 		self.xvel *= self.drag
 		self.yvel *= self.drag
