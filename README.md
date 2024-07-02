@@ -5,4 +5,3 @@ infinite jumper game in python
 
 riba jumps vertically up levels avoiding enemies.
 
-very cool 
