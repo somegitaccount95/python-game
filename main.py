@@ -1,6 +1,8 @@
 from pygame.locals import *
 import pygame
 from player import player
+from platform import platform
+
 
 # --init--
 pygame.init()
@@ -10,15 +12,17 @@ screen = pygame.display.set_mode(screen_size)
 pygame.display.set_caption("pygame Test")
 
 clock = pygame.time.Clock()
-from pygame.locals import *
 pygame.init()
 
 
 keyDict = [K_w, K_a, K_s, K_d, K_UP, K_DOWN, K_LEFT, K_RIGHT, K_SPACE]
 keys = {K_w : False, K_a : False, K_s : False, K_d : False, K_UP : False, K_DOWN : False, K_LEFT : False, K_RIGHT : False, K_SPACE : False}
 
+collisionObjects = []
 
 riba = player(screen, "Images/Riba.png", 100, 100)
+platform = platform(screen, 0, 400)
+collisionObjects.append(platform)
 
 running = True
 while running:
@@ -39,8 +43,8 @@ while running:
     screen.fill((100,112,230))
      
     # Game Loop
-    riba.update(keys)
-
+    riba.update(keys, collisionObjects)
+    platform.update()
 
     # Update
     pygame.display.flip()

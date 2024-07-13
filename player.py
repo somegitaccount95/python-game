@@ -11,14 +11,26 @@ class player:
 		self.yvel = 0
 		self.drag = 0.98
 		self.speed = 2
+		self.gravity = 0.90
 		self.jump = False
 
+	def getSurface(self):
+		return pygame.surface(self.img, (self.x, self.y))
+
+	def getRect(self):
+		return self.img.get_rect()
 
 	def draw(self):
 		self.screen.blit(self.img, (self.x, self.y))
 
+	def collisionCheck(self, collisionObjects):
+		for object in collisionObjects:
+			if object.getRect().colliderect(self.getRect()):
+				return True
+		return False
 
-	def update(self, keys):
+
+	def update(self, keys, collisionObjects):
 		self.draw()
 
 		# Movement
@@ -33,11 +45,14 @@ class player:
 			jump = False
 			
 		# Apply forces
-		self.x += self.xvel
-		self.y += self.yvel
-
 		self.xvel *= self.drag
 		self.yvel *= self.drag
+
+		if self.collisionCheck(collisionObjects) == False:
+			self.yvel *= self.gravity
+		
+		self.x += self.xvel
+		self.y += self.yvel
 
 
 		# print("xvel: " + str(self.xvel), "yvel: " + str(self.yvel))
