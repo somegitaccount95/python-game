@@ -46,6 +46,9 @@ while running:
     riba.update(keys, collisionObjects)
     platform.update()
 
+    pygame.draw.rect(screen, "Red", riba.getRect(), width=2)
+    pygame.draw.rect(screen, "Blue", platform.getRect(), width=2)
+
     # Update
     pygame.display.flip()
     clock.tick(60)

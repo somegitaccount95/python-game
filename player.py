@@ -4,7 +4,9 @@ import pygame
 class player:
 	def __init__(self, screen, img, x, y):
 		self.screen = screen
-		self.img = pygame.image.load(img)
+		self.img = pygame.image.load(img).convert_alpha()
+		self.width = self.img.get_width()
+		self.height = self.img.get_height()
 		self.x = x
 		self.y = y
 		self.xvel = 0
@@ -15,19 +17,26 @@ class player:
 		self.jump = False
 
 	def getSurface(self):
-		return pygame.surface(self.img, (self.x, self.y))
+		return self.img
 
 	def getRect(self):
-		return self.img.get_rect()
+		return pygame.Rect(self.x, self.y, self.width, self.height)
 
 	def draw(self):
 		self.screen.blit(self.img, (self.x, self.y))
 
 	def collisionCheck(self, collisionObjects):
-		for object in collisionObjects:
-			if object.getRect().colliderect(self.getRect()):
-				return True
+		for collisionObject in collisionObjects:
+			print(collisionObject.y, self.y)
+			if self.getRect().colliderect(collisionObject.getRect()):
+				self.mask = pygame.mask.from_surface(self.getSurface())
+				if self.mask.overlap(collisionObject.getMask(), (self.x - collisionObject.x, self.y - collisionObject.y)):
+					self.mask.to_surface(self.screen, None, None, "white", None, (self.x, self.y))
+					return True
 		return False
+
+		
+		# Draw Mask: mask.to_surface(self.screen, None, None, "white", None, (self.x, self.y))
 
 
 	def update(self, keys, collisionObjects):
@@ -45,12 +54,16 @@ class player:
 			jump = False
 			
 		# Apply forces
+		if not self.collisionCheck(collisionObjects):
+			self.yvel += self.gravity
+		else:
+			print("colliding")
+
 		self.xvel *= self.drag
 		self.yvel *= self.drag
-
-		if self.collisionCheck(collisionObjects) == False:
-			self.yvel *= self.gravity
 		
+		self.yvel = round(self.yvel)
+
 		self.x += self.xvel
 		self.y += self.yvel
 
