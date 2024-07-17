@@ -54,10 +54,10 @@ class player:
 			jump = False
 			
 		# Apply forces
-		if not self.collisionCheck(collisionObjects):
-			self.yvel += self.gravity
-		else:
-			print("colliding")
+		# if not self.collisionCheck(collisionObjects):
+		# 	self.yvel += self.gravity
+		# else:
+		# 	print("colliding")
 
 		self.xvel *= self.drag
 		self.yvel *= self.drag
