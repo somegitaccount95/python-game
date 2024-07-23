@@ -1,6 +1,5 @@
 from pygame.locals import *
 import pygame
-from image import image
 
 class player:
 	def __init__(self, screen, img, x, y):
@@ -16,15 +15,6 @@ class player:
 		self.speed = 2
 		self.gravity = 0.90
 		self.jump = False
-		self.orientation = "left"
-
-	def orientCheck(self):
-		if self.xvel < 0 and self.orientation == "right":
-			self.orientation = "left"
-			self.img = pygame.transform.flip(self.getSurface(), True, False)
-		elif self.xvel > 0 and self.orientation == "left":
-			self.orientation = "right"
-			self.img = pygame.transform.flip(self.getSurface(), True, False)
 
 	def getSurface(self):
 		return self.img
@@ -51,10 +41,6 @@ class player:
 
 	def update(self, keys, collisionObjects):
 		self.draw()
-
-		# Animation
-
-		self.orientCheck()
 
 		# Movement
 		if keys[K_a] == True or keys[K_LEFT] == True:
