@@ -1,6 +1,6 @@
 from pygame.locals import *
 import pygame
-from image import image
+
 
 class player:
 	def __init__(self, screen, img, x, y):
